@@ -15,7 +15,8 @@
     onMount(async () => {
         const response = await fetch('/api/players');
         const data = await response.json();
-        players = data;
+        players = data?.items;
+        console.log(players);
     });
 
 </script>
@@ -25,7 +26,7 @@
     <input type="text" placeholder="Type here" class="input m-auto w-[600px]" /> <button class="btn btn-info">Search</button>
 </div>
 
-<div class="grid grid-cols-6 gap-8 p-8 max-w-6xl mx-auto">
+<div class="grid grid-cols-6 gap-8 p-8 max-w-7xl mx-auto">
     {#each players as player}
       <Card player={player} />
     {/each}

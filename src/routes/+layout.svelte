@@ -10,7 +10,7 @@
 <Nav />
 
 
-{#if $user}
+{#if !$user }
 	{@render children()}
 {:else}
 	<!-- Open the modal using ID.showModal() method -->

@@ -1,42 +1,10 @@
-import { players } from "$lib/database";
 import { json } from "@sveltejs/kit";
 
 export async function GET() {
-    return json(players);
+    const response = await fetch('https://drop-api.ea.com/rating/ea-sports-fc?locale=en&limit=100');
+    const data = await response.json();
+    return json(data);
 }
 
-export async function POST(request) {
-    const { 
-        name, 
-        position, 
-        rating, 
-        image,
-        pace,
-        shooting,
-        passing,
-        dribbling,
-        defending,
-        physicality,
-        weak_foot,
-        skill_moves,
-        position_ability 
-    } = await request.json();
-    
-    players.push({ 
-        name, 
-        position, 
-        rating, 
-        image,
-        pace,
-        shooting,
-        passing,
-        dribbling,
-        defending,
-        physicality,
-        weak_foot,
-        skill_moves,
-        position_ability 
-    });
-    
-    return json(players);
-}
+
+
